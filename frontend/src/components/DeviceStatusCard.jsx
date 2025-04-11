@@ -1,4 +1,4 @@
-// src/components/DeviceStatusCard.jsx
+// ✅ src/components/DeviceStatusCard.jsx
 import { useEffect, useState } from 'react';
 import { useSocket } from '../contexts/WebSocketContext';
 
@@ -23,6 +23,10 @@ export default function DeviceStatusCard() {
         )
       );
     });
+
+    return () => {
+      socket.off('device_status_update');
+    };
   }, [socket]);
 
   const handleBrightnessChange = (id, value) => {
@@ -30,7 +34,6 @@ export default function DeviceStatusCard() {
       prev.map((led) => (led.id === id ? { ...led, brightness: value } : led))
     );
 
-    // 서버로 밝기 변경 요청 (예: WebSocket 또는 fetch API 사용)
     if (socket) {
       socket.emit('set_brightness', { device_id: id, brightness: value });
     }

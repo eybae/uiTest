@@ -22,3 +22,23 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+venv/
+
+# VSCode
+.vscode/
+
+# Node
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+
